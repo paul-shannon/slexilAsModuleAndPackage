@@ -3,20 +3,23 @@ import setuptools
 with open('README.md', 'r', encoding='utf-8') as fh:
     long_description = fh.read()
 
+exec(open("src/slexil/version.py").read())
+
 setuptools.setup(
-    name='example_pypi_package',
-    author='Tom Chen',
-    author_email='tomchen.org@gmail.com',
-    description='Example PyPI (Python Package Index) Package',
-    keywords='example, pypi, package',
+    name='slexil_package',
+    version = __version__,	
+    author='Paul Shannon',
+    author_email='paul.thurmond.shannon@gmail.com',
+    description='Software Linking ELAN XML to Illuminated Language',
+    keywords='slexil, ELAN, IJAL',
     long_description=long_description,
     long_description_content_type='text/markdown',
-    url='https://github.com/tomchen/example_pypi_package',
+    url='https://github.com/paul-shannon/slexil2',
     project_urls={
-        'Documentation': 'https://github.com/tomchen/example_pypi_package',
+        'Documentation': 'https://github.com/paul-shannon/slexil2',
         'Bug Reports':
-        'https://github.com/tomchen/example_pypi_package/issues',
-        'Source Code': 'https://github.com/tomchen/example_pypi_package',
+        'https://github.com/paul-shannon/slexil2/issues',
+        'Source Code': 'https://github.com/paul-shannon/slexil2',
         # 'Funding': '',
         # 'Say Thanks!': '',
     },
@@ -44,10 +47,5 @@ setuptools.setup(
         'dev': ['check-manifest'],
         # 'test': ['coverage'],
     },
-    # entry_points={
-    #     'console_scripts': [  # This can provide executable scripts
-    #         'run=examplepy:main',
-    # You can execute `run` in bash to run `main()` in src/examplepy/__init__.py
-    #     ],
-    # },
+
 )
