@@ -148,7 +148,7 @@ class IjalLine:
 
         # categories = self.tbl["category"].tolist()
         # row = categories.index("translation")
-        # pdb.set_trace()
+        # pdb. set_trace()
         if self.translationRow == None:
             logging.warning("missing translation at line %d" % (int(self.lineNumber) + 1))
             return (None)
@@ -161,7 +161,7 @@ class IjalLine:
         if self.translation2Row != None:
             translation2 = self.tbl.iloc[self.translation2Row, self.tbl.columns.values.tolist().index("TEXT")]
             translationLine2 = TranslationLine(translation2)
-            return (translationLine2.getStandardized())
+             return (translationLine2.getStandardized())
         else:
             return (None)
 
