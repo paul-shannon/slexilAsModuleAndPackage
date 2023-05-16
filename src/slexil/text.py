@@ -31,11 +31,12 @@ import os, sys
 from yattag import *
 import yaml
 from ijalLine import *
+from htmlInserter import HtmlInserter
 pd.set_option('display.width', 1000)
 import pdb
 import logging
 import identifyLines
-
+import css
 #-------------------------------------------------------------------------------
 # -*- coding: utf-8 -*-
 #-------------------------------------------------------------------------------
@@ -243,9 +244,9 @@ class Text:
 			tbl = x.getTable()
 			print("%d: %d tiers" % (i, tbl.shape[0]))
 
-	def getCSS(self):
+	def getCSSLink(self):
 		if(self.verbose):
-			print("--- entering getCSS")
+			print("--- entering getCSSLink")
 		cssFilename = "slexil.css"
 		#assert(os.path.exists(cssFilename))
 		css = '<link rel = "stylesheet" type = "text/css" href = "%s" />' % cssFilename
@@ -256,6 +257,12 @@ class Text:
 			print("--- entering getJQuery")
 		scriptTag = '<script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>\n'
 		#scriptTag = '<script src="jquery-3.3.1.min.js"></script>\n'
+		return(scriptTag)
+
+	def getShowdown(self):
+		if(self.verbose):
+			print("--- entering getShowdown")
+		scriptTag = '<script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/2.1.0/showdown.min.js"></script>\n'
 		return(scriptTag)
 
 	def getBootstrap(self):
@@ -275,15 +282,14 @@ class Text:
 		if(self.verbose):
 			print("--- entering getJavascript")
 		jsSource = ""
-		if(self.kbFilename != None):
-			jsSource += '<script src="%s"></script>\n' % self.kbFilename
-		if(self.linguisticsFilename != None):
-			jsSource += '<script src="%s"></script>\n' % self.linguisticsFilename
-		showDownScript = "showdown.js"
-		annoScript = "annotations.js"
-		jsSource += '<script src="slexil.js"></script>\n'
-		jsSource += '<script src="%s"></script>\n' % showDownScript
-		jsSource += '<script src="%s"></script>\n' % annoScript
+		#if(self.kbFilename != None):
+		#	jsSource += '<script src="%s"></script>\n' % self.kbFilename
+		#if(self.linguisticsFilename != None):
+		#	jsSource += '<script src="%s"></script>\n' % self.linguisticsFilename
+		#showDownScript = "showdown.js"
+		#annoScript = "annotations.js"
+		#jsSource += '<script src="%s"></script>\n' % showDownScript
+		#jsSource += '<script src="%s"></script>\n' % annoScript
 		startStopTimes = self.makeStartStopTable(self.timeCodesForText)
 		jsSource += '<script type="text/javascript">%s</script>\n' %startStopTimes
 		return(jsSource)
@@ -310,12 +316,15 @@ class Text:
 			print("toHTML, lineNumber count: %d" % len(self.lineNumbers))
 
 		htmlDoc.asis('<!DOCTYPE html>')
+		htmlInserter = HtmlInserter()
 		with htmlDoc.tag('html', lang="en"):
 			with htmlDoc.tag('head'):
 				htmlDoc.asis('<meta charset="UTF-8"/>')
 				htmlDoc.asis(self.getJQuery())
 				htmlDoc.asis(self.getBootstrap())
-				htmlDoc.asis(self.getCSS())
+				if(self.kbFilename != None):
+					htmlDoc.asis(self.getShowdown())
+				htmlDoc.asis(htmlInserter.getCSS())
 				htmlDoc.asis("<!-- headCustomizationHook -->")
 			with htmlDoc.tag('body'):
 				aboutBoxNeeded = False
@@ -356,6 +365,10 @@ class Text:
 
 				with htmlDoc.tag("div", klass="spacer"):
 					htmlDoc.asis('')
+				htmlDoc.asis(htmlInserter.getSlexiljs())
+
+				if(self.kbFilename != None):
+					htmlDoc.asis(htmlInserter.getAnnotationjs())
 				htmlDoc.asis(self.getJavascript())
 				htmlDoc.asis("<!-- bodyBottomCustomizationHook -->")
 		self.htmlDoc = htmlDoc
