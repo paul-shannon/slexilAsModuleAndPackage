@@ -15,21 +15,31 @@ setuptools.setup(
     long_description=long_description,
     long_description_content_type='text/markdown',
     url='https://github.com/paul-shannon/slexil2',
+    install_requires=[
+		'base64',
+		'formatting',
+		'logging',
+		'os',
+		'pandas',
+		'pdb',
+		'pprint ',
+		're',
+		'sys',
+		'xml',
+		'xmlschema',
+		'yaml',
+		'yattag'],
     project_urls={
         'Documentation': 'https://github.com/paul-shannon/slexil2',
         'Bug Reports':
         'https://github.com/paul-shannon/slexil2/issues',
-        'Source Code': 'https://github.com/paul-shannon/slexil2',
-        # 'Funding': '',
-        # 'Say Thanks!': '',
+        'Source Code': 'https://github.com/paul-shannon/slexil2'
     },
     package_dir={'': 'src'},
     packages=setuptools.find_packages(where='src'),
     classifiers=[
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.10'
-    ],
-    python_requires='>=3.10'
-    },
-
+    ]
 )
+
