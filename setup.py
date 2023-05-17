@@ -18,7 +18,6 @@ setuptools.setup(
     install_requires=[
 		'formatting',
 		'logging',
-		'os',
 		'pandas',
 		'pdb',
 		'pprint ',
@@ -40,7 +39,7 @@ setuptools.setup(
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.10',
         "License :: OSI Approved :: GPL License",
-        "Operating System :: OS Independent"
+        "Operating System :: OS Independent",
     ]
 )
 
