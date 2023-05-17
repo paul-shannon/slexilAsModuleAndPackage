@@ -18,6 +18,7 @@ setuptools.setup(
     install_requires=[
 		'formatting',
 		'pandas',
+		'numpy',
 		'xmlschema',
 		'pyyaml',
 		'yattag'],
