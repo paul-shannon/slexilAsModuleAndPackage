@@ -17,7 +17,6 @@ setuptools.setup(
     url='https://github.com/paul-shannon/slexil2',
     install_requires=[
 		'formatting',
-		'logging',
 		'pandas',
 		'xmlschema',
 		'pyyaml',
