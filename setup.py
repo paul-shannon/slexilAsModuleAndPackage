@@ -16,7 +16,6 @@ setuptools.setup(
     long_description_content_type='text/markdown',
     url='https://github.com/paul-shannon/slexil2',
     install_requires=[
-		'base64',
 		'formatting',
 		'logging',
 		'os',
