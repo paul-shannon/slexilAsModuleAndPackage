@@ -28,6 +28,7 @@ setuptools.setup(
 		'xmlschema',
 		'yaml',
 		'yattag'],
+	requires-python = ">=3.9"
     project_urls={
         'Documentation': 'https://github.com/paul-shannon/slexil2',
         'Bug Reports':
@@ -38,7 +39,9 @@ setuptools.setup(
     packages=setuptools.find_packages(where='src'),
     classifiers=[
         'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.10'
+        'Programming Language :: Python :: 3.10',
+        "License :: OSI Approved :: GPL License",
+        "Operating System :: OS Independent"
     ]
 )
 
