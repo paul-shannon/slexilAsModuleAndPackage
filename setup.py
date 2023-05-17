@@ -28,7 +28,6 @@ setuptools.setup(
 		'xmlschema',
 		'yaml',
 		'yattag'],
-	requires-python = ">=3.9"
     project_urls={
         'Documentation': 'https://github.com/paul-shannon/slexil2',
         'Bug Reports':
