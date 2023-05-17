@@ -19,7 +19,6 @@ setuptools.setup(
 		'formatting',
 		'logging',
 		'pandas',
-		'pprint ',
 		're',
 		'xml',
 		'xmlschema',
