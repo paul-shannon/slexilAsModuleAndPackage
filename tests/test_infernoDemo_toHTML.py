@@ -1,12 +1,19 @@
+import os
+#import tempfile
 import unittest
 from slexil.text import Text
 from yattag import indent
+
+#----------------------------------------------------------------------------------------------------
+packageRoot = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+dataDir = os.path.join(packageRoot, "data", "infernoDemo")
+projectDir = os.path.join(packageRoot, "tests", "tmp")
 #----------------------------------------------------------------------------------------------------
 def createText():
-	elanXmlFilename =      "../data/infernoDemo/inferno-threeLines.eaf"
-	projectDirectory =     "./"
-	tierGuideFile =        "../data/infernoDemo/tierGuide.yaml"
-	grammaticalTermsFile = "../data/infernoDemo/grammaticalTerms.txt"
+	elanXmlFilename =      os.path.join(dataDir, "inferno-threeLines.eaf")
+	projectDirectory =     projectDir
+	tierGuideFile =        os.path.join(dataDir, "tierGuide.yaml")
+	grammaticalTermsFile = os.path.join(dataDir, "grammaticalTerms.txt")
 	fontSizeControls = False
 	startLine = None
 	endLine = None

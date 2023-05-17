@@ -2,12 +2,19 @@ import unittest
 from slexil.morphemeGloss import MorphemeGloss
 import pdb
 import yattag
+import os
 
 rawText = "in=DEF:MASC:SG	middle-MASC:SG	of=DEF:MASC:SG	journey–MASC:SG	of	our-FEM:SG	life-FEM"
-termsFile = "../data/infernoDemo/grammaticalTerms.txt"
-termsRaw = open(termsFile).readlines()
+
+packageRoot = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+dataDir = os.path.join(packageRoot, "data")
+grammaticalTermsFile = os.path.join(dataDir, "infernoDemo", "grammaticalTerms.txt")
+tierGuideFile = os.path.join(dataDir, "infernoDemo", "tierGuide.yaml")
+
+assert(os.path.exists(grammaticalTermsFile))
+termsRaw = open(grammaticalTermsFile).readlines()
 grammaticalTerms = [term.strip() for term in termsRaw]
-tierGuide = '../data/infernoDemo/tierGuide.yaml'
+assert(os.path.exists(tierGuideFile))
 
 class TestMorphemeGloss(unittest.TestCase):
 

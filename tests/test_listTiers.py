@@ -1,9 +1,12 @@
+import os
 import unittest
 import slexil
 from xml.etree import ElementTree as etree
 
-eafFile = '../data/infernoDemo/inferno-threeLines.eaf'
-tierGuide = '../data/infernoDemo/tierGuide.yaml'
+packageRoot = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+dataDir = os.path.join(packageRoot, "data")
+eafFile = os.path.join(dataDir, "infernoDemo", "inferno-threeLines.eaf")
+tierGuideFile = os.path.join(dataDir, "infernoDemo", "tierGuide.yaml")
 
 class TestListTiers(unittest.TestCase):
 
