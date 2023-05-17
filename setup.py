@@ -19,7 +19,6 @@ setuptools.setup(
 		'formatting',
 		'logging',
 		'pandas',
-		'xml',
 		'xmlschema',
 		'yaml',
 		'yattag'],
