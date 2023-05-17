@@ -1,5 +1,4 @@
 import os
-#import tempfile
 import unittest
 from slexil.text import Text
 from yattag import indent
