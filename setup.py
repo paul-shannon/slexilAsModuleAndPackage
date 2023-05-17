@@ -20,7 +20,7 @@ setuptools.setup(
 		'logging',
 		'pandas',
 		'xmlschema',
-		'yaml',
+		'pyyaml',
 		'yattag'],
     project_urls={
         'Documentation': 'https://github.com/paul-shannon/slexil2',
