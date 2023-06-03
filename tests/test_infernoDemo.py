@@ -1,6 +1,7 @@
 import unittest
 import os
-from slexil import ijalLine as ijalLine
+from slexil.ijalLine import *
+# from slexil import ijalLine as ijalLine
 from xml.etree import ElementTree as etree
 import yaml
 import pandas as pd
@@ -19,14 +20,17 @@ class TestInfernoStructure(unittest.TestCase):
 		root = xmlDoc.getroot()
 		alignedTiers = root.findall("TIER/ANNOTATION/ALIGNABLE_ANNOTATION")
 		lineCount = len(alignedTiers)
-		tmpTbl = ijalLine.buildTable(xmlDoc, alignedTiers)
+		tmpTbl = buildTable(xmlDoc, alignedTiers) # global function in ijalLine.py
+		print(tmpTbl)
+
 		tierGuideFile = os.path.join(dataDir, "tierGuide.yaml")
 		with open(tierGuideFile, 'r') as f:
 			tierGuide = yaml.safe_load(f)
 		grammaticalTerms = ["hab", "past"]
 		for i in range(lineCount):
-			newLine = ijalLine.IjalLine(xmlDoc, i, tierGuide, grammaticalTerms)
+			newLine = IjalLine(xmlDoc, i, tierGuide, grammaticalTerms)
 			newLine.parse()
+			#tmpTbl = newLine.buildTable(xmlDoc, alignedTiers)
 			print(newLine.getSpokenText())
 			print("   %s" % newLine.getTranslation())
 			startTime = newLine.getStartTime()
