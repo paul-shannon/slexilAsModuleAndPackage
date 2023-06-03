@@ -1,7 +1,6 @@
 import unittest
 import os
-from slexil.ijalLine import *
-# from slexil import ijalLine as ijalLine
+from slexil.ijalLine import *  # permits ctor call: IjalLine(...) & buildTable
 from xml.etree import ElementTree as etree
 import yaml
 import pandas as pd
